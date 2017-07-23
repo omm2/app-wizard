@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import RaisedButton from 'material-ui/RaisedButton'
+import { Link } from 'react-router-dom'
 
 import { setCity } from '../../state/actions/wizard'
 
@@ -54,11 +54,7 @@ export class City extends React.Component {
     render() {
         const isNextDisabled = (this.props.city === '')
         const nextProps = {
-            label: 'Next',
-            disabled: isNextDisabled,
-            href: isNextDisabled ? '#' : '/info',
-            backgroundColor: isNextDisabled ? '#e1e2e1' : '#4fc3f7',
-            style: { color: '#fff' },
+            to: isNextDisabled ? '#' : '/info',
         }
         return (
             <div className='container'>
@@ -75,13 +71,15 @@ export class City extends React.Component {
                   <input id='autocomplete' placeholder='Enter your city'
                          onFocus={geolocate()} type='text'/>
                 </div>
-
-                <RaisedButton {...nextProps} />
+                {
+                    isNextDisabled ?
+                    '' :
+                    <Link {...nextProps}>{'Next'}</Link>
+                }
             </div>
         )
     }
 }
-
 export const mapStateToProps = ({ wizard }) => {
     const {
         city,
