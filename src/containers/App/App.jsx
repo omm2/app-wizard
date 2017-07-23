@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Route, Switch, withRouter } from 'react-router-dom'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
-import { City } from '../City/City.jsx'
+import City from '../City/City.jsx'
 import { Info } from '../Info/Info.jsx'
 import { Confirm } from '../Confirm/Confirm.jsx'
 
